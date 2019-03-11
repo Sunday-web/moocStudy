@@ -1,1 +1,17 @@
 /* pages/classic/classic.wxss */
+.container{
+  display: flex;
+}
+.chunk{
+  width:200rpx;
+  height: 200rpx;
+}
+.color1{
+  background-color: brown;
+}
+.color2{
+  background-color: aqua;
+}
+.color3{
+  background-color: blue;
+}
