@@ -21,3 +21,5 @@
 .color3{
   background-color: blue;
 }
+
+/* 以上是flex部分讲解 */
