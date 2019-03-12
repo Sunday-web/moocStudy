@@ -1,9 +1,15 @@
 /* pages/classic/classic.wxss */
 .container{
+  /* height: 800rpx; */
   display: flex;
+  flex-wrap:wrap;
+  flex-direction: row;/*主轴和交叉轴与flex-direction有关 */
+  justify-content: center;/*控制子元素的排列方向 主轴方向*/
+  align-items: flex-start;/*交叉轴方向*/
+  background-color: #999999;
 }
 .chunk{
-  width:200rpx;
+  width:300rpx;
   height: 200rpx;
 }
 .color1{
