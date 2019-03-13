@@ -6,4 +6,5 @@
   <view class='chunk color3'>3</view>
 </view> -->
 <!-- 以上是flex部分讲解 -->
-<v-like />
+<v-like bind:like="onLike" like="{{classic.like_status}}" count="{{classic.fav_nums}}"/>
+<v-movie img="{{classic.image}}" content="{{classic.content}}"/>
