@@ -39,7 +39,7 @@ class HTTP {
     }
     const tip = tips[error_code]
     wx.showToast({
-      title: tips?tips:tips[1],
+      title: tip ? tip:tips[1],
       icon: 'none',
       duration: 2000
     })
