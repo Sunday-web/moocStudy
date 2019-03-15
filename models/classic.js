@@ -1,4 +1,7 @@
 import { HTTP } from '../util/http.js'
+
+
+
 class ClassicModel extends HTTP{
   getLatest(sCallback){
     this.request({
@@ -15,7 +18,8 @@ class ClassicModel extends HTTP{
     let classic = wx.getStorageSync(key)
     if(!classic){
       this.request({
-        url: 'classic/' + index + '/' + nextOrPrevious,
+        url: `classic/${index}/${nextOrPrevious}`,
+        //url: 'classic/' + index + '/' + nextOrPrevious,
         success: (res) => {
           wx.setStorageSync(this._getKey(res.index), res)
           sCallback(res)

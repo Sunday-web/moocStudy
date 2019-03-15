@@ -12,7 +12,9 @@ Page({
   data: {
     classic:null,
     latest:true,
-    first:false
+    first:false,
+    likeCount:0,
+    likeStatus:false
   },
  
   /**
@@ -21,8 +23,12 @@ Page({
   onLoad: function (options) {
     //数据更新
     classicModel.getLatest((res)=>{
+      //this._getLikeStatus(res.id,res.type)
       this.setData({
-        classic:res
+        // ...res   es6扩展运算符 把res展开
+        classic:res,
+        likeCount:res.fav_nums,
+        likeStatus:res.like_status
       })
     })
   },
@@ -42,12 +48,21 @@ Page({
     let index = this.data.classic.index
     classicModel.getClassic(index, nextOrPrevious,(res) => {
       // console.log(res)
+      this._getLikeStatus(res.id,res.type)
       this.setData({
         classic: res,
         latest: classicModel.isLatest(res.index),
         first: classicModel.isFirst(res.index)
       })
     })
-  }
+  },
 
+  _getLikeStatus:function(artID,category){
+    likeModel.getClassLikeStatus(artID, category,(res)=>{
+      this.setData({
+        likeCount:res.fav_nums,
+        likeStatus:res.like_status
+      })
+    })
+  }
 })
