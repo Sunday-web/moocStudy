@@ -1,8 +1,10 @@
 // components/classic/music/index.js
-import { classicBeh } from '../classic-beh.js'
+import {
+  classicBeh
+} from '../classic-beh.js'
 
 
-const mMgr=wx.getBackgroundAudioManager()
+const mMgr = wx.getBackgroundAudioManager()
 
 Component({
   /**
@@ -10,7 +12,7 @@ Component({
    */
   behaviors: [classicBeh],
   properties: {
-    src:String,
+    src: String,
     title: String
   },
 
@@ -23,12 +25,12 @@ Component({
     playSrc: 'images/player@play.png'
   },
 
-  attached:function(event){
+  attached: function(event) {
     this._recoverStatus()
     this._monitorSwitch()
   },
 
-  detached:function(){
+  detached: function() {
     //mMgr.stop()
   },
 
@@ -36,38 +38,38 @@ Component({
    * 组件的方法列表
    */
   methods: {
-    onPlay:function(){
-      if(!this.data.playing){
+    onPlay: function() {
+      if (!this.data.playing) {
         this.setData({
           playing: true
         })
         mMgr.src = this.properties.src
         mMgr.title = this.properties.title
-      }else{
+      } else {
         this.setData({
           playing: false
         })
         mMgr.pause()
       }
-      
+
     },
 
-    _recoverStatus:function () {
+    _recoverStatus: function() {
       if (mMgr.paused) {
         this.setData({
-          playing:false
-          })
-          return
+          playing: false
+        })
+        return
       }
-      if (mMgr.src==this.properties.src) {
+      if (mMgr.src == this.properties.src) {
         this.setData({
-          playing:true
-          })
+          playing: true
+        })
       }
     },
 
-    _monitorSwitch:function(){
-      mMgr.onPlay(()=>{
+    _monitorSwitch: function() {
+      mMgr.onPlay(() => {
         this._recoverStatus()
       })
       mMgr.onPause(() => {
